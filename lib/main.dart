@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:spotify_flutter/beamer_config.dart';
+import 'package:spotify_flutter/core/beamer/beamer_config.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:spotify_flutter/core/beamer/main_navigation.dart';
 
-import 'main_navigation.dart';
+
 
 void main() {
   // turn off the # in the URLs on the web
