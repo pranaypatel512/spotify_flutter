@@ -45,6 +45,7 @@ dependencies:
   flex_color_scheme: ^7.1.2
   adaptive_navigation: ^0.0.9
   beamer: 1.5.3
+  google_fonts: ^4.0.5
 
 dev_dependencies:
   flutter_test:
