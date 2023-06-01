@@ -42,29 +42,27 @@ class DioExceptions implements Exception {
       case 400:
         return whichCase == 1
             ? error['error_description']
-            : error['message'] ?? 'Bad request';
+            : error['error']['message'] ?? 'Bad request';
       case 401:
         return whichCase == 1
             ? error['error_description']
-            : error['message'] ?? 'Unauthorized';
+            : error['error']['message'] ?? 'Unauthorized';
       case 403:
         return whichCase == 1
             ? error['error_description']
-            : error['message'] ?? 'Forbidden';
+            : error['error']['message'] ?? 'Forbidden';
       case 404:
-        return whichCase == 1
-            ? error['error_description']
-            : error['message'];
+        return whichCase == 1 ? error['error_description'] : error['error']['message'];
       case 420:
         return 'Session Expired. Please LogIn again';
       case 500:
         return whichCase == 1
             ? error['error_description']
-            : error['message'] ?? 'Internal server error';
+            : error['error']['message'] ?? 'Internal server error';
       case 502:
         return whichCase == 1
             ? error['error_description']
-            : error['message'] ?? 'Server unavailable';
+            : error['error']['message'] ?? 'Server unavailable';
       default:
         return 'Oops something went wrong';
     }

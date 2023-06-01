@@ -160,7 +160,7 @@ class _$_AuthTokenResponseState implements _AuthTokenResponseState {
   _$_AuthTokenResponseState(
       {this.authTokenResponse = null,
       this.authTokenErrorResponse = null,
-      this.isLoading = true});
+      this.isLoading = false});
 
   @override
   @JsonKey()

@@ -1,12 +1,24 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:spotify_flutter/core/constants/network_constants.dart';
+import 'package:spotify_flutter/main.dart';
+
+import '../../pref/shared_pref_helper.dart';
 
 class DioInterceptor extends Interceptor {
+  final _prefsLocator = getIt.get<SharedPreferenceHelper>();
+
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    log("Request[${options.method}] => PATH: ${options.path}");
+    if (options.path == NetworkConstants.baseUrlAuth) {
+      options.contentType = Headers.formUrlEncodedContentType;
+    } else {
+      options.headers['Authorization'] =
+          'Bearer ${_prefsLocator.getUserToken()}';
+    }
+    log("Request[${options.method}] => PATH: ${options.path} => Data: ${options.data}");
     super.onRequest(options, handler);
   }
 
