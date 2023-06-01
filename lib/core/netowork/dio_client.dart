@@ -2,12 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:spotify_flutter/core/constants/network_constants.dart';
 import 'package:spotify_flutter/core/netowork/Interceptor/dio_interceptor.dart';
 
-class DioClient{
+class DioClient {
   final Dio _dio;
 
-  DioClient(this._dio){
-    _dio..options.connectTimeout = const Duration(milliseconds: NetworkConstants.connectionTimeout)
-      ..options.receiveTimeout = const Duration(milliseconds: NetworkConstants.receiveTimeout)
+  DioClient(this._dio) {
+    _dio
+      ..options.connectTimeout =
+          const Duration(milliseconds: NetworkConstants.connectionTimeout)
+      ..options.receiveTimeout =
+          const Duration(milliseconds: NetworkConstants.receiveTimeout)
       ..options.responseType = ResponseType.json
       ..interceptors.add(DioInterceptor())
       ..interceptors.add(LogInterceptor(
@@ -18,7 +21,7 @@ class DioClient{
         responseBody: true,
       ));
   }
-  
+
 // Get:-----------------------------------------------------------------------
   Future<dynamic> get(
     String uri, {
@@ -43,7 +46,7 @@ class DioClient{
 
   // Post:----------------------------------------------------------------------
   Future<Response> post(
-    String uri, {
+    String uri, Map<dynamic, String> map, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,

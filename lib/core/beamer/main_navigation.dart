@@ -4,22 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:spotify_flutter/core/beamer/beamer_config.dart';
 // ignore: depend_on_referenced_packages
 
-
 /// A widget class that shows the BottomNavigationBar and performs navigation
 /// between tabs
 class MainScreenNavigation extends StatefulWidget {
   const MainScreenNavigation({super.key});
 
   @override
-  State<MainScreenNavigation> createState() =>
-      _MainScreenNavigationState();
+  State<MainScreenNavigation> createState() => _MainScreenNavigationState();
 }
 
 class _MainScreenNavigationState extends State<MainScreenNavigation> {
   late int _currentIndex;
 
-
-  
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
