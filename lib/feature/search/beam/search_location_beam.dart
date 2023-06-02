@@ -16,13 +16,13 @@ class SearchLocation extends BeamLocation<BeamState> {
           key: ValueKey(search),
           title: search,
           type: BeamPageType.noTransition,
-          child: HomeScreen(),
+          child: SearchScreen(),
         ),
-        if (state.uri.pathSegments.length == 2)
-          const BeamPage(
-            key: ValueKey(pathSearchDetails),
-            title: 'Search Details',
-            child: SearchScreen(),
-          ),
+        // if (state.uri.pathSegments.length == 2)
+        //   const BeamPage(
+        //     key: ValueKey(pathSearchDetails),
+        //     title: 'Search Details',
+        //     child: SearchScreen(),
+        //   ),
       ];
 }

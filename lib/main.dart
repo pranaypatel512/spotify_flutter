@@ -1,4 +1,5 @@
 
+import 'package:beamer/beamer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,57 +40,24 @@ Future<void> initPref() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
-  // final routerDelegate = BeamerDelegate(
-  //   initialPath: pathHome,
-  //   locationBuilder: RoutesLocationBuilder(
-  //     routes: {
-  //       '*': (context, state, data) => const MainScreenNavigation(),
-  //     },
-  //   ),
-  // );
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return ProviderScope(
-  //     child: MaterialApp.router(
-  //       debugShowCheckedModeBanner: false,
-  //       theme: FlexThemeData.dark(
-  //           scheme: FlexScheme.blueM3,
-  //           appBarElevation: 0.7,
-  //           fontFamily: GoogleFonts.rubik().fontFamily,
-  //           // We use the nicer Material 3 Typography in both M2 and M3 mode.
-  //           typography: Typography.material2021(
-  //             platform: defaultTargetPlatform,
-  //           )),
-  //       // The Mandy red, dark theme.
-  //       darkTheme: FlexThemeData.dark(
-  //           scheme: FlexScheme.blueM3,
-  //           appBarElevation: 0.7,
-  //           fontFamily: GoogleFonts.rubik().fontFamily,
-  //           // We use the nicer Material 3 Typography in both M2 and M3 mode.
-  //           typography: Typography.material2021(
-  //             platform: defaultTargetPlatform,
-  //           )),
-  //       // Use dark or light theme based on system setting.
-  //       themeMode: ThemeMode.system,
-  //       routerDelegate: routerDelegate,
-  //       routeInformationParser: BeamerParser(),
-  //       backButtonDispatcher: BeamerBackButtonDispatcher(
-  //         delegate: routerDelegate,
-  //       ),
-  //     ),
-  //   );
-  // }
+  final routerDelegate = BeamerDelegate(
+    initialPath: pathHome,
+    locationBuilder: RoutesLocationBuilder(
+      routes: {
+        '*': (context, state, data) => const MainScreenNavigation(),
+      },
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: FlexThemeData.light(
-            scheme: FlexScheme.deepBlue,
+        theme: FlexThemeData.dark(
+            scheme: FlexScheme.blueM3,
             appBarElevation: 0.7,
             fontFamily: GoogleFonts.rubik().fontFamily,
             // We use the nicer Material 3 Typography in both M2 and M3 mode.
@@ -104,55 +72,89 @@ class MyApp extends StatelessWidget {
             // We use the nicer Material 3 Typography in both M2 and M3 mode.
             typography: Typography.material2021(
               platform: defaultTargetPlatform,
-            ),),
+            )),
         // Use dark or light theme based on system setting.
         themeMode: ThemeMode.system,
-        routerConfig: _goRouter,
+        routerDelegate: routerDelegate,
+        routeInformationParser: BeamerParser(),
+        backButtonDispatcher: BeamerBackButtonDispatcher(
+          delegate: routerDelegate,
+        ),
       ),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return ProviderScope(
+  //     child: MaterialApp.router(
+  //       debugShowCheckedModeBanner: false,
+  //       theme: FlexThemeData.light(
+  //           scheme: FlexScheme.deepBlue,
+  //           appBarElevation: 0.7,
+  //           fontFamily: GoogleFonts.rubik().fontFamily,
+  //           // We use the nicer Material 3 Typography in both M2 and M3 mode.
+  //           typography: Typography.material2021(
+  //             platform: defaultTargetPlatform,
+  //           )),
+  //       // The Mandy red, dark theme.
+  //       darkTheme: FlexThemeData.dark(
+  //           scheme: FlexScheme.blueM3,
+  //           appBarElevation: 0.7,
+  //           fontFamily: GoogleFonts.rubik().fontFamily,
+  //           // We use the nicer Material 3 Typography in both M2 and M3 mode.
+  //           typography: Typography.material2021(
+  //             platform: defaultTargetPlatform,
+  //           ),),
+  //       // Use dark or light theme based on system setting.
+  //       themeMode: ThemeMode.system,
+  //       routerConfig: _goRouter,
+  //     ),
+  //   );
+  // }
+
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
-final GoRouter _goRouter = GoRouter(
-    initialLocation: pathHome,
-    navigatorKey: _rootNavigatorKey,
-    routes: [
-      ShellRoute(
-          navigatorKey: _shellNavigatorKey,
-          builder: (context, state, child) {
-            return MainScreenNavigation(
-              child: child,
-            );
-          },
-          routes: [
-            GoRoute(
-              path: pathHome,
-              pageBuilder: (context, state) => NoTransitionPage(
-                key: state.pageKey,
-                child: const HomeScreen(),
-              ),
-              routes: const [
-                // GoRoute(
-                //   path: 'details',
-                //   builder: (context, state) => const DetailsScreen(label: 'A'),
-                // ),
-              ],
-            ),
-            GoRoute(
-              path: pathSearch,
-              pageBuilder: (context, state) => NoTransitionPage(
-                key: state.pageKey,
-                child: const SearchScreen(),
-              ),
-              routes: const [
-                // GoRoute(
-                //   path: 'details',
-                //   builder: (context, state) => const DetailsScreen(label: 'A'),
-                // ),
-              ],
-            )
-          ])
-    ]);
+// final GoRouter _goRouter = GoRouter(
+//     initialLocation: pathHome,
+//     navigatorKey: _rootNavigatorKey,
+//     routes: [
+//       ShellRoute(
+//           navigatorKey: _shellNavigatorKey,
+//           builder: (context, state, child) {
+//             return MainScreenNavigation(
+//               child: child,
+//             );
+//           },
+//           routes: [
+//             GoRoute(
+//               path: pathHome,
+//               pageBuilder: (context, state) => NoTransitionPage(
+//                 key: state.pageKey,
+//                 child: const HomeScreen(),
+//               ),
+//               routes: const [
+//                 // GoRoute(
+//                 //   path: 'details',
+//                 //   builder: (context, state) => const DetailsScreen(label: 'A'),
+//                 // ),
+//               ],
+//             ),
+//             GoRoute(
+//               path: pathSearch,
+//               pageBuilder: (context, state) => NoTransitionPage(
+//                 key: state.pageKey,
+//                 child: const SearchScreen(),
+//               ),
+//               routes: const [
+//                 // GoRoute(
+//                 //   path: 'details',
+//                 //   builder: (context, state) => const DetailsScreen(label: 'A'),
+//                 // ),
+//               ],
+//             )
+//           ])
+//     ]);
