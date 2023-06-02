@@ -1,45 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The details screen for either the A or B screen.
-class DetailsScreen extends StatefulWidget {
-  /// Constructs a [DetailsScreen].
-  const DetailsScreen({
-    required this.label,
+class SearchScreen extends ConsumerWidget {
+  /// Constructs a [SearchScreen].
+  const SearchScreen({
     Key? key,
   }) : super(key: key);
 
-  /// The label to display in the center of the screen.
-  final String label;
-
   @override
-  State<StatefulWidget> createState() => DetailsScreenState();
-}
-
-/// The state for DetailsScreen
-class DetailsScreenState extends State<DetailsScreen> {
-  int _counter = 0;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Details Screen - ${widget.label}'),
+        title: Text('Details Screen'),
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text('Details for ${widget.label} - Counter: $_counter',
+            Text('Details  - Counter:',
                 style: Theme.of(context).textTheme.titleLarge),
-            const Padding(padding: EdgeInsets.all(4)),
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  _counter++;
-                });
-              },
-              child: const Text('Increment counter'),
-            ),
           ],
         ),
       ),

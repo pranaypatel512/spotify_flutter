@@ -16,13 +16,13 @@ class HomeLocation extends BeamLocation<BeamState> {
           key: ValueKey(home),
           title: "Home",
           type: BeamPageType.noTransition,
-          child: HomeScreen(label: home, detailsPath: '/$pathHomeDetails'),
+          child: HomeScreen(),
         ),
-        if (state.uri.pathSegments.length == 2)
-          const BeamPage(
-            key: ValueKey(pathHomeDetails),
-            title: 'Home Details',
-            child: DetailsScreen(label: home),
-          ),
+        // if (state.uri.pathSegments.length == 2)
+        //   const BeamPage(
+        //     key: ValueKey(pathHomeDetails),
+        //     title: 'Home Details',
+        //     child: SearchScreen(),
+        //   ),
       ];
 }
