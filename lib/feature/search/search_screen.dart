@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spotify_flutter/feature/search/search_widget.dart';
 
 /// The details screen for either the A or B screen.
 class SearchScreen extends ConsumerWidget {
@@ -12,14 +13,12 @@ class SearchScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Details Screen'),
+        title: Text('Search'),
       ),
       body: Center(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text('Details  - Counter:',
-                style: Theme.of(context).textTheme.titleLarge),
+            SpotifySearchBar()
           ],
         ),
       ),
