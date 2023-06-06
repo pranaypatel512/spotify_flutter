@@ -31,4 +31,3 @@ final List<BeamerDelegate> routerDelegates = [
     },
   ),
 ];
-
