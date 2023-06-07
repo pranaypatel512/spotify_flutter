@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:progressive_image/progressive_image.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
+import 'package:spotify_flutter/core/extension/extension.dart';
+import 'package:spotify_flutter/core/widget/list_tile_shimmer.dart';
 import 'package:spotify_flutter/feature/search/search_response/search_response/item.dart';
 import 'package:spotify_flutter/feature/search/provider/search_screen_provider.dart';
 import 'package:spotify_flutter/feature/search/search_request.dart';
@@ -45,7 +47,7 @@ class SearchScreen extends ConsumerWidget {
             }
             if (data.isLoading) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: TrackListTileShimmer(),
               );
             }
             log('Response: ${data.searchResponse.toString()}');
@@ -146,7 +148,8 @@ class SearchScreen extends ConsumerWidget {
               return StickyHeader(
           header: Container(
             height: 50.0,
-            color: Colors.blueGrey[700],
+            color: context.isDark ? const ColorScheme.dark().onBackground.withAlpha(9) : 
+            const ColorScheme.light().onBackground.withAlpha(9),
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             alignment: Alignment.centerLeft,
             child: Text(titleAsPerIndex(index),
@@ -243,8 +246,30 @@ class SearchScreen extends ConsumerWidget {
             },shrinkWrap: true,itemCount: 5,),
         );          
 }, loading: () {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Expanded(
+              child: ResponsiveGridList(
+                        horizontalGridSpacing:
+                            4, // Horizontal space between grid items
+                        verticalGridSpacing:
+                            4, // Vertical space between grid items
+                        horizontalGridMargin:
+                            4, // Horizontal space around the grid
+                        verticalGridMargin:
+                            4, // Vertical space around the grid
+                        minItemWidth:
+                            200, // The minimum item width (can be smaller, if the layout constraints are smaller)
+                        minItemsPerRow:
+                            2, // The minimum items to show in a single row. Takes precedence over minItemWidth
+                        maxItemsPerRow:
+                            6, // The maximum items to show in a single row. Can be useful on large screens
+                        listViewBuilderOptions:
+                            ListViewBuilderOptions(shrinkWrap: true,
+                          physics: const ScrollPhysics(),scrollDirection: Axis.vertical), // Options that are getting passed to the ListView.builder() function
+                        children:[ 
+                          
+                          for(var index in Iterable.generate(20))...[
+                          const TrackListTileShimmer()
+                        ]]),
             );
           })
         ],
