@@ -41,4 +41,19 @@ final homeNewReleaseRepositoryProvider =
 
 typedef HomeNewReleaseRepositoryRef
     = AutoDisposeProviderRef<HomeNewReleaseRepository>;
+String _$detailRepositoryHash() => r'1727853a34bfa018473a0496b86fe83f652521e2';
+
+/// See also [detailRepository].
+@ProviderFor(detailRepository)
+final detailRepositoryProvider = AutoDisposeProvider<DetailRepository>.internal(
+  detailRepository,
+  name: r'detailRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$detailRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef DetailRepositoryRef = AutoDisposeProviderRef<DetailRepository>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

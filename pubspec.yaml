@@ -44,7 +44,7 @@ dependencies:
   riverpod_annotation: ^2.1.1
   flex_color_scheme: ^7.1.2
   adaptive_navigation: ^0.0.9
-  beamer: 1.5.3
+  beamer: 1.5.5
   google_fonts: ^4.0.5
   json_serializable: ^6.7.0
   shared_preferences_riverpod: ^0.3.0

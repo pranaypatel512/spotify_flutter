@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:progressive_image/progressive_image.dart';
@@ -5,6 +6,8 @@ import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:spotify_flutter/core/authtoken/provider/auth_token_provider.dart';
 import 'package:spotify_flutter/feature/home/model/new_release_list_response/item.dart';
 import 'package:spotify_flutter/feature/home/provider/home_screen_provider.dart';
+
+import '../detail/beam/detail_location_beam.dart';
 
 /// Widget for the root/initial pages in the bottom navigation bar.
 class HomeScreen extends ConsumerWidget {
@@ -50,7 +53,7 @@ class HomeScreen extends ConsumerWidget {
                       for (var element in items) ...[
                         GestureDetector(
                           onTap: () => {
-                            //context.goNamed("details", extra: element)
+                            context.beamToNamed("/home/details/${element.id}")
                           },
                           child: Card(
                             child: Column(
