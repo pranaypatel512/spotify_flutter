@@ -12,8 +12,8 @@ class HomeNewReleaseRepository {
 
   Future<HomeScreenState> fetchNewReleaseList() async {
     try {
-      final response = await dioClient.
-      get("${NetworkConstants.baseUrl}browse/new-releases?country=IN");
+      final response = await dioClient
+          .get("${NetworkConstants.baseUrl}browse/new-releases?country=IN");
       //if (response.statusCode == 200) {
       return HomeScreenState(
           newReleaseListResponse:

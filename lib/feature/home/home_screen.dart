@@ -34,10 +34,8 @@ class HomeScreen extends ConsumerWidget {
                 ? ResponsiveGridList(
                     horizontalGridSpacing:
                         4, // Horizontal space between grid items
-                    verticalGridSpacing:
-                        4, // Vertical space between grid items
-                    horizontalGridMargin:
-                        4, // Horizontal space around the grid
+                    verticalGridSpacing: 4, // Vertical space between grid items
+                    horizontalGridMargin: 4, // Horizontal space around the grid
                     verticalGridMargin: 4, // Vertical space around the grid
                     minItemWidth:
                         200, // The minimum item width (can be smaller, if the layout constraints are smaller)
@@ -62,7 +60,8 @@ class HomeScreen extends ConsumerWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(6.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         element.name ?? '',
@@ -83,7 +82,6 @@ class HomeScreen extends ConsumerWidget {
                                               element.releaseDate ?? '',
                                               style: const TextStyle(
                                                 fontSize: 14.0,
-                                                
                                               ),
                                             ),
                                           ),
@@ -191,7 +189,7 @@ Widget _displayMedia(String? finalUrl) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(4),
       child: Image.asset(
-        "assets/images/picture.png",
+        "assets/images/image_place_holder.png",
         height: 160,
         width: double.infinity,
       ),

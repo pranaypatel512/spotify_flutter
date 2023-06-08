@@ -52,7 +52,9 @@ class DioExceptions implements Exception {
             ? error['error_description']
             : error['error']['message'] ?? 'Forbidden';
       case 404:
-        return whichCase == 1 ? error['error_description'] : error['error']['message'];
+        return whichCase == 1
+            ? error['error_description']
+            : error['error']['message'];
       case 420:
         return 'Session Expired. Please LogIn again';
       case 500:
