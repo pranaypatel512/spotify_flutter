@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:progressive_image/progressive_image.dart';
@@ -48,6 +49,13 @@ class SearchScreen extends ConsumerWidget {
             if (data.isLoading) {
               return const Center(
                 child: TrackListTileShimmer(),
+              );
+            }
+            if (data.searchResponse?.isBlank??true==true) {
+              return Center(
+                child: Text('No search result found',style: TextStyle(
+                  color: context.isDark ? FlexColorScheme.dark().error : FlexColorScheme.light().error
+                ),),
               );
             }
             log('Response: ${data.searchResponse.toString()}');

@@ -55,37 +55,37 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        // theme: FlexThemeData.dark(
-        //     scheme: FlexScheme.blueM3,
-        //     appBarElevation: 0.7,
-        //     fontFamily: GoogleFonts.rubik().fontFamily,
-        //     // We use the nicer Material 3 Typography in both M2 and M3 mode.
-        //     typography: Typography.material2021(
-        //       platform: defaultTargetPlatform,
-        //     )),
-        // The Mandy red, dark theme.
-        // darkTheme: FlexThemeData.dark(
-        //     scheme: FlexScheme.blueM3,
-        //     appBarElevation: 0.7,
-        //     fontFamily: GoogleFonts.rubik().fontFamily,
-        //     // We use the nicer Material 3 Typography in both M2 and M3 mode.
-        //     typography: Typography.material2021(
-            //   platform: defaultTargetPlatform,
-            // )),
-            theme: ThemeData(
-  colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: Colors.green, // or flexSwatch
-    primaryColorDark: const Color(0xFF1ed760),
-    brightness: Brightness.light,
-  ),
-),
-darkTheme: ThemeData(
-  colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: Colors.green, // or flexSwatch
-    primaryColorDark: const Color(0xFF1ed760),
-    brightness: Brightness.dark,
-  ),
-),
+        theme: FlexThemeData.dark(
+            scheme: FlexScheme.blueM3,
+            appBarElevation: 0.7,
+            fontFamily: GoogleFonts.rubik().fontFamily,
+            // We use the nicer Material 3 Typography in both M2 and M3 mode.
+            typography: Typography.material2021(
+              platform: defaultTargetPlatform,
+            )),
+        //The Mandy red, dark theme.
+        darkTheme: FlexThemeData.dark(
+            scheme: FlexScheme.blueM3,
+            appBarElevation: 0.7,
+            fontFamily: GoogleFonts.rubik().fontFamily,
+            // We use the nicer Material 3 Typography in both M2 and M3 mode.
+            typography: Typography.material2021(
+              platform: defaultTargetPlatform,
+            )),
+//             theme: ThemeData(
+//   colorScheme: ColorScheme.fromSwatch(
+//     primarySwatch: Colors.green, // or flexSwatch
+//     primaryColorDark: const Color(0xFF1ed760),
+//     brightness: Brightness.light,
+//   ),
+// ),
+// darkTheme: ThemeData(
+//   colorScheme: ColorScheme.fromSwatch(
+//     primarySwatch: Colors.green, // or flexSwatch
+//     primaryColorDark: const Color(0xFF1ed760),
+//     brightness: Brightness.dark,
+//   ),
+// ),
         // Use dark or light theme based on system setting.
         themeMode: ThemeMode.system,
         routerDelegate: routerDelegate,

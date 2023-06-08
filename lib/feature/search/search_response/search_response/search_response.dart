@@ -38,3 +38,9 @@ String titleAsPerIndex(int index){
    }
   
 }
+
+extension BlankResponse on SearchResponse{
+  bool get isBlank {
+    return albums?.items==null && artists?.items==null && playlists?.items==null && tracks?.items==null && shows?.items==null;
+  }
+}
