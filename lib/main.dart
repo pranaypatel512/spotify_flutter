@@ -13,12 +13,8 @@ import 'package:spotify_flutter/core/beamer/main_navigation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:spotify_flutter/core/pref/shared_pref_helper.dart';
 
-import 'package:go_router/go_router.dart';
-import 'package:spotify_flutter/feature/home/home_screen.dart';
-import 'package:go_router/go_router.dart';
 
 import 'core/beamer/beamer_config.dart';
-import 'feature/search/search_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -72,20 +68,6 @@ class MyApp extends StatelessWidget {
             typography: Typography.material2021(
               platform: defaultTargetPlatform,
             )),
-//             theme: ThemeData(
-//   colorScheme: ColorScheme.fromSwatch(
-//     primarySwatch: Colors.green, // or flexSwatch
-//     primaryColorDark: const Color(0xFF1ed760),
-//     brightness: Brightness.light,
-//   ),
-// ),
-// darkTheme: ThemeData(
-//   colorScheme: ColorScheme.fromSwatch(
-//     primarySwatch: Colors.green, // or flexSwatch
-//     primaryColorDark: const Color(0xFF1ed760),
-//     brightness: Brightness.dark,
-//   ),
-// ),
         // Use dark or light theme based on system setting.
         themeMode: ThemeMode.system,
         routerDelegate: routerDelegate,

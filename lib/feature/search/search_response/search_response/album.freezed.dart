@@ -406,23 +406,18 @@ class _$_Album implements _Album {
 
 abstract class _Album implements Album {
   factory _Album(
-      {@JsonKey(name: 'album_type')
-          final String? albumType,
+      {@JsonKey(name: 'album_type') final String? albumType,
       final List<Artist>? artists,
-      @JsonKey(name: 'external_urls')
-          final ExternalUrls? externalUrls,
+      @JsonKey(name: 'external_urls') final ExternalUrls? externalUrls,
       final String? href,
       final String? id,
       final List<Image>? images,
-      @JsonKey(name: 'is_playable')
-          final bool? isPlayable,
+      @JsonKey(name: 'is_playable') final bool? isPlayable,
       final String? name,
-      @JsonKey(name: 'release_date')
-          final String? releaseDate,
+      @JsonKey(name: 'release_date') final String? releaseDate,
       @JsonKey(name: 'release_date_precision')
-          final String? releaseDatePrecision,
-      @JsonKey(name: 'total_tracks')
-          final int? totalTracks,
+      final String? releaseDatePrecision,
+      @JsonKey(name: 'total_tracks') final int? totalTracks,
       final String? type,
       final String? uri}) = _$_Album;
 

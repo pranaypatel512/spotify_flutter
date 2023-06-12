@@ -415,23 +415,18 @@ class _$_Item implements _Item {
 
 abstract class _Item implements Item {
   factory _Item(
-      {@JsonKey(name: 'album_type')
-          final String? albumType,
+      {@JsonKey(name: 'album_type') final String? albumType,
       final List<Artist>? artists,
-      @JsonKey(name: 'available_markets')
-          final List<String>? availableMarkets,
-      @JsonKey(name: 'external_urls')
-          final ExternalUrls? externalUrls,
+      @JsonKey(name: 'available_markets') final List<String>? availableMarkets,
+      @JsonKey(name: 'external_urls') final ExternalUrls? externalUrls,
       final String? href,
       final String? id,
       final List<Image>? images,
       final String? name,
-      @JsonKey(name: 'release_date')
-          final String? releaseDate,
+      @JsonKey(name: 'release_date') final String? releaseDate,
       @JsonKey(name: 'release_date_precision')
-          final String? releaseDatePrecision,
-      @JsonKey(name: 'total_tracks')
-          final int? totalTracks,
+      final String? releaseDatePrecision,
+      @JsonKey(name: 'total_tracks') final int? totalTracks,
       final String? type,
       final String? uri}) = _$_Item;
 

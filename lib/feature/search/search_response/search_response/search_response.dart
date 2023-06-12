@@ -21,26 +21,28 @@ class SearchResponse with _$SearchResponse {
 
   factory SearchResponse.fromJson(Map<String, dynamic> json) =>
       _$SearchResponseFromJson(json);
-
 }
 
-String titleAsPerIndex(int index){
-   if(index==1) {
-     return "Artists"; 
-   } else if(index==2) {
-     return "Tracks";
-   } else if(index==3) {
-     return "Playlists" ;
-   } else if(index==4) {
-     return "Shows";
-   } else {
-     return "Albums";
-   }
-  
+String titleAsPerIndex(int index) {
+  if (index == 1) {
+    return "Artists";
+  } else if (index == 2) {
+    return "Tracks";
+  } else if (index == 3) {
+    return "Playlists";
+  } else if (index == 4) {
+    return "Shows";
+  } else {
+    return "Albums";
+  }
 }
 
-extension BlankResponse on SearchResponse{
+extension BlankResponse on SearchResponse {
   bool get isBlank {
-    return albums?.items==null && artists?.items==null && playlists?.items==null && tracks?.items==null && shows?.items==null;
+    return albums?.items == null &&
+        artists?.items == null &&
+        playlists?.items == null &&
+        tracks?.items == null &&
+        shows?.items == null;
   }
 }

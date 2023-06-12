@@ -17,6 +17,7 @@ class HomeScreen extends ConsumerWidget {
     final homeListState = ref.watch(homeListProvider);
 
     final isLoading = tokenState.isLoading || homeListState.isLoading;
+    // ignore: unused_local_variable
     final hasError = tokenState.authTokenErrorResponse?.error ??
         homeListState.newReleaseErrorResponse?.error?.message;
     final items =

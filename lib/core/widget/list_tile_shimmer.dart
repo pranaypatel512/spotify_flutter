@@ -7,9 +7,10 @@ class TrackListTileShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color baseColor = context.isDark ? const ColorScheme.dark().onSecondaryContainer.withAlpha(9) : 
-            const ColorScheme.light().onSecondaryContainer.withAlpha(9);
-    
+    Color baseColor = context.isDark
+        ? const ColorScheme.dark().onSecondaryContainer.withAlpha(9)
+        : const ColorScheme.light().onSecondaryContainer.withAlpha(9);
+
     return Shimmer.fromColors(
       baseColor: baseColor,
       highlightColor: baseColor,
@@ -23,7 +24,7 @@ class TrackListTileShimmer extends StatelessWidget {
                 height: 200,
                 color: Colors.black,
               )
-               ],
+            ],
           ),
         ),
       ),

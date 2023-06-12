@@ -1,7 +1,5 @@
 import 'package:beamer/beamer.dart';
-import 'package:go_router/go_router.dart';
 import 'package:spotify_flutter/feature/home/beam/home_location_beam.dart';
-import 'package:spotify_flutter/feature/home/home_screen.dart';
 import 'package:spotify_flutter/feature/search/beam/search_location_beam.dart';
 
 const String home = "home";

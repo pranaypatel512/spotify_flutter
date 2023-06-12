@@ -1,7 +1,7 @@
 import 'package:adaptive_navigation/adaptive_navigation.dart';
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+//import 'package:go_router/go_router.dart';
 import 'package:spotify_flutter/core/beamer/beamer_config.dart';
 // ignore: depend_on_referenced_packages
 

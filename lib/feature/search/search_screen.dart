@@ -51,11 +51,15 @@ class SearchScreen extends ConsumerWidget {
                 child: TrackListTileShimmer(),
               );
             }
-            if (data.searchResponse?.isBlank??true==true) {
+            if (data.searchResponse?.isBlank ?? true == true) {
               return Center(
-                child: Text('No search result found',style: TextStyle(
-                  color: context.isDark ? FlexColorScheme.dark().error : FlexColorScheme.light().error
-                ),),
+                child: Text(
+                  'No search result found',
+                  style: TextStyle(
+                      color: context.isDark
+                          ? FlexColorScheme.dark().error
+                          : FlexColorScheme.light().error),
+                ),
               );
             }
             log('Response: ${data.searchResponse.toString()}');
@@ -151,48 +155,51 @@ class SearchScreen extends ConsumerWidget {
             //         ),
             //       ])
             //     : const Divider();
-        return Flexible(
-          child: ListView.builder(itemBuilder: (context, index) {
-              return StickyHeader(
-          header: Container(
-            height: 50.0,
-            color: context.isDark ? const ColorScheme.dark().onBackground.withAlpha(9) : 
-            const ColorScheme.light().onBackground.withAlpha(9),
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            alignment: Alignment.centerLeft,
-            child: Text(titleAsPerIndex(index),
-              style: const TextStyle(color: Colors.white),
-            ),
-          ),
-          content: ResponsiveGridList(
+            return Flexible(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return StickyHeader(
+                    header: Container(
+                      height: 50.0,
+                      color: context.isDark
+                          ? const ColorScheme.dark().onBackground.withAlpha(9)
+                          : const ColorScheme.light().onBackground.withAlpha(9),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        titleAsPerIndex(index),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    content: ResponsiveGridList(
                       horizontalGridSpacing:
                           4, // Horizontal space between grid items
                       verticalGridSpacing:
                           4, // Vertical space between grid items
                       horizontalGridMargin:
                           4, // Horizontal space around the grid
-                      verticalGridMargin:
-                          4, // Vertical space around the grid
+                      verticalGridMargin: 4, // Vertical space around the grid
                       minItemWidth:
                           200, // The minimum item width (can be smaller, if the layout constraints are smaller)
                       minItemsPerRow:
                           2, // The minimum items to show in a single row. Takes precedence over minItemWidth
                       maxItemsPerRow:
                           6, // The maximum items to show in a single row. Can be useful on large screens
-                      listViewBuilderOptions:
-                          ListViewBuilderOptions(shrinkWrap: true,
-                        physics: const ScrollPhysics(),scrollDirection: Axis.vertical), // Options that are getting passed to the ListView.builder() function
+                      listViewBuilderOptions: ListViewBuilderOptions(
+                          shrinkWrap: true,
+                          physics: const ScrollPhysics(),
+                          scrollDirection: Axis
+                              .vertical), // Options that are getting passed to the ListView.builder() function
                       children: [
                         for (var element
-                            in listSections(index,data.searchResponse)) ...[
+                            in listSections(index, data.searchResponse)) ...[
                           GestureDetector(
                             onTap: () => {
                               //context.goNamed("details", extra: element)
                             },
                             child: Card(
                               child: Column(
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   _displayMedia(element.images?.first.url),
                                   const SizedBox(height: 4.0),
@@ -234,8 +241,7 @@ class SearchScreen extends ConsumerWidget {
                                               style: const TextStyle(
                                                 fontSize: 14.0,
                                               ),
-                                              overflow:
-                                                  TextOverflow.ellipsis,
+                                              overflow: TextOverflow.ellipsis,
                                               maxLines: 1,
                                             ))
                                           ],
@@ -250,34 +256,37 @@ class SearchScreen extends ConsumerWidget {
                         ]
                       ], // The list of widgets in the list
                     ),
-              );
-            },shrinkWrap: true,itemCount: 5,),
-        );          
-}, loading: () {
+                  );
+                },
+                shrinkWrap: true,
+                itemCount: 5,
+              ),
+            );
+          }, loading: () {
             return Expanded(
               child: ResponsiveGridList(
-                        horizontalGridSpacing:
-                            4, // Horizontal space between grid items
-                        verticalGridSpacing:
-                            4, // Vertical space between grid items
-                        horizontalGridMargin:
-                            4, // Horizontal space around the grid
-                        verticalGridMargin:
-                            4, // Vertical space around the grid
-                        minItemWidth:
-                            200, // The minimum item width (can be smaller, if the layout constraints are smaller)
-                        minItemsPerRow:
-                            2, // The minimum items to show in a single row. Takes precedence over minItemWidth
-                        maxItemsPerRow:
-                            6, // The maximum items to show in a single row. Can be useful on large screens
-                        listViewBuilderOptions:
-                            ListViewBuilderOptions(shrinkWrap: true,
-                          physics: const ScrollPhysics(),scrollDirection: Axis.vertical), // Options that are getting passed to the ListView.builder() function
-                        children:[ 
-                          
-                          for(var index in Iterable.generate(20))...[
-                          const TrackListTileShimmer()
-                        ]]),
+                  horizontalGridSpacing:
+                      4, // Horizontal space between grid items
+                  verticalGridSpacing: 4, // Vertical space between grid items
+                  horizontalGridMargin: 4, // Horizontal space around the grid
+                  verticalGridMargin: 4, // Vertical space around the grid
+                  minItemWidth:
+                      200, // The minimum item width (can be smaller, if the layout constraints are smaller)
+                  minItemsPerRow:
+                      2, // The minimum items to show in a single row. Takes precedence over minItemWidth
+                  maxItemsPerRow:
+                      6, // The maximum items to show in a single row. Can be useful on large screens
+                  listViewBuilderOptions: ListViewBuilderOptions(
+                      shrinkWrap: true,
+                      physics: const ScrollPhysics(),
+                      scrollDirection: Axis
+                          .vertical), // Options that are getting passed to the ListView.builder() function
+                  children: [
+                    // ignore: unused_local_variable
+                    for (var index in Iterable.generate(20)) ...[
+                      const TrackListTileShimmer()
+                    ]
+                  ]),
             );
           })
         ],
@@ -310,16 +319,16 @@ Widget _displayMedia(String? finalUrl) {
   }
 }
 
-List<Item> listSections(int index, SearchResponse? searchResponse){
-  if(index==0){
+List<Item> listSections(int index, SearchResponse? searchResponse) {
+  if (index == 0) {
     return searchResponse?.albums?.items ?? List.empty();
-  } else if(index==1){
+  } else if (index == 1) {
     return searchResponse?.artists?.items ?? List.empty();
-  }else if(index==2){
+  } else if (index == 2) {
     return searchResponse?.tracks?.items ?? List.empty();
-  }else if(index==3){
+  } else if (index == 3) {
     return searchResponse?.playlists?.items ?? List.empty();
-  }else if(index==4){
+  } else if (index == 4) {
     return searchResponse?.shows?.items ?? List.empty();
   } else {
     return List.empty();
