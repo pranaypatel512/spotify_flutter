@@ -13,7 +13,6 @@ import 'package:spotify_flutter/core/beamer/main_navigation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:spotify_flutter/core/pref/shared_pref_helper.dart';
 
-
 import 'core/beamer/beamer_config.dart';
 
 Future main() async {
