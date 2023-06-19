@@ -1,4 +1,3 @@
-
 import 'package:beamer/beamer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +13,7 @@ import 'package:spotify_flutter/core/beamer/main_navigation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:spotify_flutter/core/pref/shared_pref_helper.dart';
 
-import 'package:go_router/go_router.dart';
-import 'package:spotify_flutter/feature/home/home_screen.dart';
-import 'package:go_router/go_router.dart';
-
 import 'core/beamer/beamer_config.dart';
-import 'feature/search/search_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +44,7 @@ class MyApp extends StatelessWidget {
       },
     ),
   );
-
+//#1ed760
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
@@ -64,7 +58,7 @@ class MyApp extends StatelessWidget {
             typography: Typography.material2021(
               platform: defaultTargetPlatform,
             )),
-        // The Mandy red, dark theme.
+        //The Mandy red, dark theme.
         darkTheme: FlexThemeData.dark(
             scheme: FlexScheme.blueM3,
             appBarElevation: 0.7,
@@ -112,7 +106,6 @@ class MyApp extends StatelessWidget {
   //     ),
   //   );
   // }
-
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();

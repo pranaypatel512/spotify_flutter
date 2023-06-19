@@ -1,7 +1,8 @@
 import 'package:adaptive_navigation/adaptive_navigation.dart';
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
+//import 'package:go_router/go_router.dart';
 import 'package:spotify_flutter/core/beamer/beamer_config.dart';
 // ignore: depend_on_referenced_packages
 
@@ -49,8 +50,12 @@ class _MainScreenNavigationState extends State<MainScreenNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveNavigationScaffold(
-      body: IndexedStack(
+    return AdaptiveScaffold(
+      smallBreakpoint: const WidthPlatformBreakpoint(end: 700),
+      mediumBreakpoint: const WidthPlatformBreakpoint(begin: 700, end: 1000),
+      largeBreakpoint: const WidthPlatformBreakpoint(begin: 1000),
+      useDrawer: false,
+      body: (_) => IndexedStack(
         index: _currentIndex,
         children: [
           Beamer(
@@ -61,9 +66,33 @@ class _MainScreenNavigationState extends State<MainScreenNavigation> {
           ),
         ],
       ),
+      smallBody: (_) => IndexedStack(
+        index: _currentIndex,
+        children: [
+          Beamer(
+            routerDelegate: routerDelegates[0],
+          ),
+          Beamer(
+            routerDelegate: routerDelegates[1],
+          ),
+        ],
+      ),
+      largeBody: (_) => IndexedStack(
+        index: _currentIndex,
+        children: [
+          Beamer(
+            routerDelegate: routerDelegates[0],
+          ),
+          Beamer(
+            routerDelegate: routerDelegates[1],
+          ),
+        ],
+      ),
+      // secondaryBody: AdaptiveScaffold.emptyBuilder,
+      // smallSecondaryBody: AdaptiveScaffold.emptyBuilder,
       selectedIndex: _currentIndex,
       destinations: _allDestinations,
-      onDestinationSelected: (index) {
+      onSelectedIndexChange: (index) {
         if (index != _currentIndex) {
           setState(() => _currentIndex = index);
           routerDelegates[_currentIndex].update(rebuild: false);
@@ -82,18 +111,27 @@ class _MainScreenNavigationState extends State<MainScreenNavigation> {
 
 const _allDestinations = [
   ScaffoldWithNavBarTabItem(
-      initialLocation: home, label: 'Home', icon: Icons.home),
+    initialLocation: home,
+    label: 'Home',
+    icon: Icon(Icons.home),
+    selectedIcon: Icon(Icons.home_filled),
+  ),
   ScaffoldWithNavBarTabItem(
-      initialLocation: search, label: 'Search', icon: Icons.search)
+    initialLocation: home,
+    label: 'Search',
+    icon: Icon(Icons.search),
+    selectedIcon: Icon(Icons.search_off_rounded),
+  ),
 ];
 
 /// Representation of a tab item in the [ScaffoldWithBottomNavBar]
-class ScaffoldWithNavBarTabItem extends AdaptiveScaffoldDestination {
+class ScaffoldWithNavBarTabItem extends NavigationDestination {
   const ScaffoldWithNavBarTabItem({
     required this.initialLocation,
     required String label,
-    required IconData icon,
-  }) : super(icon: icon, title: label);
+    required Widget icon,
+    required Widget selectedIcon,
+  }) : super(icon: icon, selectedIcon: selectedIcon, label: label);
 
   /// The initial location/path
   final String initialLocation;

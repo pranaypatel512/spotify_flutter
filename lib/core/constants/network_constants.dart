@@ -8,4 +8,5 @@ class NetworkConstants {
 
   // connectTimeout
   static const int connectionTimeout = 30000;
+  static const String market = "IN";
 }

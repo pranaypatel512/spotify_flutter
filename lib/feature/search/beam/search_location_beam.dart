@@ -1,7 +1,7 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:spotify_flutter/core/beamer/beamer_config.dart';
-import 'package:spotify_flutter/feature/home/home_screen.dart';
+//import 'package:spotify_flutter/feature/home/home_screen.dart';
 import 'package:spotify_flutter/feature/search/search_screen.dart';
 
 // Location defining the pages for the second tab

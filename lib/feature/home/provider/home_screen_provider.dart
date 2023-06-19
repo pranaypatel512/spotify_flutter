@@ -6,7 +6,7 @@ import 'package:spotify_flutter/feature/home/state/home_screen_state.dart';
 
 final homeListProvider =
     StateNotifierProvider<HomeScreenListProvider, HomeScreenState>((ref) {
-        final tokenState = ref.watch(authTokenProvider);
+  ref.watch(authTokenProvider);
   return HomeScreenListProvider(ref.read(homeNewReleaseRepositoryProvider));
 });
 
